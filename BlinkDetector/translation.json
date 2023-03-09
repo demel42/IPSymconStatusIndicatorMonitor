@@ -1,0 +1,26 @@
+{
+	"translations": {
+		"de": {
+			"Blink detector": "Blink-Erkennung",
+
+			"__function__": "CheckConfiguration",
+			"Topic is required": "Topic muss angegeben sein",
+
+			"__properties__": "",
+			"Disable instance": "Instanz deaktivieren",
+
+			"Topic": "Topic",
+			"Blink detection": "Erkennung des Zustands \"Blinken\"",
+			"Observation period": "Beobachtungs-Zeitraum",
+			"Minimum count of changes": "minimale Anzahl von Zustandsänderungen",
+			"Minutes": "Minuten",
+			"Maximum duration of inactivity": "maximale Dauer von Inaktivität",
+
+			"__variables__": "",
+			"State": "Zustand",
+			"Alarm": "Alarm",
+
+			"__end__": ""
+		}
+	}
+}

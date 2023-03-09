@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-trait ModuleTemplateLocalLib
+trait BlinkDetectorLocalLib
 {
     private function GetFormStatus()
     {
@@ -29,10 +29,23 @@ trait ModuleTemplateLocalLib
         return $class;
     }
 
+    public static $STATE_UNKNOWN = 0;
+    public static $STATE_ON = 1;
+    public static $STATE_OFF = 2;
+    public static $STATE_BLINK = 3;
+
     private function InstallVarProfiles(bool $reInstall = false)
     {
         if ($reInstall) {
             $this->SendDebug(__FUNCTION__, 'reInstall=' . $this->bool2str($reInstall), 0);
         }
+
+        $associations = [
+            ['Wert' => self::$STATE_UNKNOWN, 'Name' => $this->Translate('unknown'), 'Farbe' => -1],
+            ['Wert' => self::$STATE_ON, 'Name' => $this->Translate('on'), 'Farbe' => -1],
+            ['Wert' => self::$STATE_OFF, 'Name' => $this->Translate('off'), 'Farbe' => -1],
+            ['Wert' => self::$STATE_BLINK, 'Name' => $this->Translate('blink'), 'Farbe' => -1],
+        ];
+        $this->CreateVarProfile('BlinkDetector.State', VARIABLETYPE_INTEGER, '', 0, 0, 0, 0, '', $associations, $reInstall);
     }
 }
