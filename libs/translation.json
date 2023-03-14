@@ -1,7 +1,7 @@
 {
 	"translations": {
 		"de": {
-			"__variableprofile__": "BlinkDetector.State",
+			"__variableprofile__": "StatusIndicatorMonitor.State",
 			"unknown": "unbekannt",
 			"on": "an",
 			"off": "aus",

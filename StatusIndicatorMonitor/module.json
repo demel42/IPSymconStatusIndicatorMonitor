@@ -1,6 +1,6 @@
 {
 	"id": "{A54DAEA0-DFE7-D8DE-7BDD-803381C23EDF}",
-	"name": "Blink detector",
+	"name": "Statusanzeige überwachen",
 	"type": 3,
 	"vendor": "",
 	"aliases": [],
@@ -11,6 +11,6 @@
 	"implemented": [
 		"{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}"
 	],
-	"prefix": "BlinkDetector",
-	"url": "https://github.com/demel42/IPSymconBlinkDetector/blob/main/README.md"
+	"prefix": "StatusIndicatorMonitor",
+	"url": "https://github.com/demel42/IPSymconStatusIndicatorMonitor/blob/main/README.md"
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-trait BlinkDetectorLocalLib
+trait StatusIndicatorMonitorLocalLib
 {
     private function GetFormStatus()
     {
@@ -46,6 +46,6 @@ trait BlinkDetectorLocalLib
             ['Wert' => self::$STATE_OFF, 'Name' => $this->Translate('off'), 'Farbe' => -1],
             ['Wert' => self::$STATE_BLINK, 'Name' => $this->Translate('blink'), 'Farbe' => -1],
         ];
-        $this->CreateVarProfile('BlinkDetector.State', VARIABLETYPE_INTEGER, '', 0, 0, 0, 0, '', $associations, $reInstall);
+        $this->CreateVarProfile('StatusIndicatorMonitor.State', VARIABLETYPE_INTEGER, '', 0, 0, 0, 0, '', $associations, $reInstall);
     }
 }

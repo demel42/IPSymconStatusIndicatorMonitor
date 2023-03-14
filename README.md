@@ -24,8 +24,8 @@
 
 ### a. Installation des Moduls
 
-Im [Module Store](https://www.symcon.de/service/dokumentation/komponenten/verwaltungskonsole/module-store/) ist das Modul unter dem Suchbegriff *BlinkDetector* zu finden.<br>
-Alternativ kann das Modul über [Module Control](https://www.symcon.de/service/dokumentation/modulreferenz/module-control/) unter Angabe der URL `https://github.com/demel42/IPSymconBlinkDetector` installiert werden.
+Im [Module Store](https://www.symcon.de/service/dokumentation/komponenten/verwaltungskonsole/module-store/) ist das Modul unter dem Suchbegriff *StatusIndicatorMonitor* zu finden.<br>
+Alternativ kann das Modul über [Module Control](https://www.symcon.de/service/dokumentation/modulreferenz/module-control/) unter Angabe der URL `https://github.com/demel42/IPSymconStatusIndicatorMonitor` installiert werden.
 
 ### b. Einrichtung in IPS
 
@@ -33,7 +33,7 @@ Alternativ kann das Modul über [Module Control](https://www.symcon.de/service/d
 
 ## 5. Konfiguration
 
-### BlinkDetector Device
+### StatusIndicatorMonitor Device
 
 #### Properties
 
@@ -59,12 +59,12 @@ Es werden folgende Variablenprofile angelegt:
 ### GUIDs
 - Modul: `{C359DCFA-C34F-80BD-1C50-67C3A55A1257}`
 - Instanzen:
-  - BlinkDetector: `{A54DAEA0-DFE7-D8DE-7BDD-803381C23EDF}`
+  - StatusIndicatorMonitor: `{A54DAEA0-DFE7-D8DE-7BDD-803381C23EDF}`
 - Nachrichten:
 
 ### Quellen
 
 ## 7. Versions-Historie
 
-- 1.0 @ 09.03.2023 17:05
+- 1.0 @ 14.03.2023 11:09
   - Initiale Version

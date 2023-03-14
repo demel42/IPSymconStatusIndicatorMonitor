@@ -5,10 +5,10 @@ declare(strict_types=1);
 require_once __DIR__ . '/../libs/common.php';
 require_once __DIR__ . '/../libs/local.php';
 
-class BlinkDetector extends IPSModule
+class StatusIndicatorMonitor extends IPSModule
 {
-    use BlinkDetector\StubsCommonLib;
-    use BlinkDetectorLocalLib;
+    use StatusIndicatorMonitor\StubsCommonLib;
+    use StatusIndicatorMonitorLocalLib;
 
     private static $semaphoreTM = 1000;
 
@@ -100,7 +100,7 @@ class BlinkDetector extends IPSModule
 
         $vpos = 1;
 
-        $this->MaintainVariable('State', $this->Translate('State'), VARIABLETYPE_INTEGER, 'BlinkDetector.State', $vpos++, true);
+        $this->MaintainVariable('State', $this->Translate('State'), VARIABLETYPE_INTEGER, 'StatusIndicatorMonitor.State', $vpos++, true);
         $this->MaintainVariable('Alarm', $this->Translate('Alarm'), VARIABLETYPE_BOOLEAN, '~Alert', $vpos++, true);
 
         $module_disable = $this->ReadPropertyBoolean('module_disable');
@@ -123,7 +123,7 @@ class BlinkDetector extends IPSModule
 
     private function GetFormElements()
     {
-        $formElements = $this->GetCommonFormElements('Blink detector');
+        $formElements = $this->GetCommonFormElements('Monitor status indicator');
 
         if ($this->GetStatus() == self::$IS_UPDATEUNCOMPLETED) {
             return $formElements;
@@ -143,7 +143,7 @@ class BlinkDetector extends IPSModule
 
         $formElements[] = [
             'type'      => 'ExpansionPanel',
-            'caption'   => 'Blink detection',
+            'caption'   => 'Detection of the state "flashing"',
             'expanded'  => true,
             'items'     => [
                 [
@@ -352,7 +352,7 @@ class BlinkDetector extends IPSModule
 
                 IPS_SemaphoreLeave($this->SemaphoreID);
 
-				$this->SendDebug(__FUNCTION__, 'state=' . $this->CheckVarProfile4Value('BlinkDetector.State', $state) . ', alarm=' . $this->bool2str($alarm), 0);
+				$this->SendDebug(__FUNCTION__, 'state=' . $this->CheckVarProfile4Value('StatusIndicatorMonitor.State', $state) . ', alarm=' . $this->bool2str($alarm), 0);
 
                 if ($state == self::$STATE_BLINK) {
                     $this->SetUpdateInterval($observation_period + 1);
@@ -382,7 +382,7 @@ class BlinkDetector extends IPSModule
 
         IPS_SemaphoreLeave($this->SemaphoreID);
 
-        $this->SendDebug(__FUNCTION__, 'state=' . $this->CheckVarProfile4Value('BlinkDetector.State', $state) . ', alarm=' . $this->bool2str($alarm), 0);
+        $this->SendDebug(__FUNCTION__, 'state=' . $this->CheckVarProfile4Value('StatusIndicatorMonitor.State', $state) . ', alarm=' . $this->bool2str($alarm), 0);
 
         $this->SetUpdateInterval();
     }

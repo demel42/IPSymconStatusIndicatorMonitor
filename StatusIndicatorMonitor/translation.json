@@ -1,7 +1,7 @@
 {
 	"translations": {
 		"de": {
-			"Blink detector": "Blink-Erkennung",
+			"Monitor status indicator": "Statusanzeige überwachen",
 
 			"__function__": "CheckConfiguration",
 			"Topic is required": "Topic muss angegeben sein",
@@ -10,7 +10,7 @@
 			"Disable instance": "Instanz deaktivieren",
 
 			"Topic": "Topic",
-			"Blink detection": "Erkennung des Zustands \"Blinken\"",
+			"Detection of the state \"flashing\"": "Erkennung des Zustands \"Blinken\"",
 			"Observation period": "Beobachtungs-Zeitraum",
 			"Minimum count of changes": "minimale Anzahl von Zustandsänderungen",
 			"Minutes": "Minuten",
