@@ -1,9 +1,11 @@
 {
 	"id": "{A54DAEA0-DFE7-D8DE-7BDD-803381C23EDF}",
-	"name": "Statusanzeige überwachen",
+	"name": "StatusIndicatorMonitor",
 	"type": 3,
 	"vendor": "",
-	"aliases": [],
+	"aliases": [
+		"Statusanzeige überwachen"
+	],
 	"parentRequirements": [
 		"{043EA491-0325-4ADD-8FC2-A30C8EEB4D3F}"
 	],
