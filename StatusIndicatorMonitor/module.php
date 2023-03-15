@@ -347,12 +347,12 @@ class StatusIndicatorMonitor extends IPSModule
                 $state = $this->DetermineState($new_entries);
                 $this->SetValue('State', $state);
 
-				$alarm = false;
+                $alarm = false;
                 $this->SetValue('Alarm', $alarm);
 
                 IPS_SemaphoreLeave($this->SemaphoreID);
 
-				$this->SendDebug(__FUNCTION__, 'state=' . $this->CheckVarProfile4Value('StatusIndicatorMonitor.State', $state) . ', alarm=' . $this->bool2str($alarm), 0);
+                $this->SendDebug(__FUNCTION__, 'state=' . $this->CheckVarProfile4Value('StatusIndicatorMonitor.State', $state) . ', alarm=' . $this->bool2str($alarm), 0);
 
                 if ($state == self::$STATE_BLINK) {
                     $this->SetUpdateInterval($observation_period + 1);
@@ -373,11 +373,19 @@ class StatusIndicatorMonitor extends IPSModule
         }
 
         $states = @json_decode($this->GetBuffer('States'), true);
-        $state = $this->DetermineState($states['entries']);
+        if (isset($states['entries'])) {
+            $state = $this->DetermineState($states['entries']);
+        } else {
+            $state = self::$STATE_UNKNOWN;
+        }
         $this->SetValue('State', $state);
 
-        $inactivity_duration = $this->ReadPropertyInteger('inactivity_duration');
-        $alarm = (time() - $states['timestamp']) > $inactivity_duration;
+        if (isset($states['timestamp'])) {
+            $inactivity_duration = $this->ReadPropertyInteger('inactivity_duration');
+            $alarm = (time() - $states['timestamp']) > $inactivity_duration;
+        } else {
+            $alarm = false;
+        }
         $this->SetValue('Alarm', $alarm);
 
         IPS_SemaphoreLeave($this->SemaphoreID);
