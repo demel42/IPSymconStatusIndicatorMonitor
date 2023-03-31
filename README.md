@@ -66,6 +66,9 @@ Es werden folgende Variablenprofile angelegt:
 
 ## 7. Versions-Historie
 
+- 1.2 @ 31.03.2023 15:14
+  - mehr Debug für den Ergebnisempfang
+
 - 1.1 @ 15.03.2023 10:17
   - Fix: Fehler bei der Datenverarbeitung vor dem ersten Datenempfang
 

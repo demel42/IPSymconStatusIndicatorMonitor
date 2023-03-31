@@ -150,6 +150,7 @@ class StatusIndicatorMonitor extends IPSModule
                     'type'    => 'NumberSpinner',
                     'name'    => 'observation_period',
                     'minimum' => 1,
+                    'suffix'  => 'Seconds',
                     'caption' => 'Observation period',
                 ],
                 [
@@ -260,9 +261,11 @@ class StatusIndicatorMonitor extends IPSModule
         $n_entries = count($entries);
         if ($n_entries) {
             $begin = $now - $observation_period;
+            $this->SendDebug(__FUNCTION__, 'now=' . $now . ', begin=' . $begin, 0);
             $last_state = $entries[$n_entries - 1]['state'];
             $cur_state = $state;
             for ($i = $n_entries - 2; $i >= 0; $i--) {
+                $this->SendDebug(__FUNCTION__, '...entry=' . print_r($entries[$i], true), 0);
                 if ($entries[$i]['timestamp'] < $begin) {
                     break;
                 }
@@ -278,9 +281,7 @@ class StatusIndicatorMonitor extends IPSModule
             }
         }
 
-        /*
         $this->SendDebug(__FUNCTION__, 'state_changes=' . $state_changes . ', determined state=' . $state, 0);
-         */
         return $state;
     }
 
@@ -317,6 +318,14 @@ class StatusIndicatorMonitor extends IPSModule
                 $max_age = $this->ReadPropertyInteger('max_age');
                 $observation_period = $this->ReadPropertyInteger('observation_period');
 
+                $t = microtime(true);
+                $ts = (int) floor($t);
+                $ms = (int) floor(($t - $ts) * 1000);
+                $payload_ts = strtotime($payload_time);
+                $delay = (int) floor(($t - $payload_ts) * 1000);
+
+                $this->SendDebug(__FUNCTION__, 'cur_ts=' . date('d.m.Y H:i:s', $ts) . '.' . $ms . ', payload_ts=' . date('d.m.Y H:i:s', $payload_ts) . ', delay=' . $delay . 'ms', 0);
+
                 $now = time();
                 $states = @json_decode($this->GetBuffer('States'), true);
                 if ($states == false) {
@@ -336,7 +345,7 @@ class StatusIndicatorMonitor extends IPSModule
                     $new_entries[] = $entries[$i];
                 }
                 $new_entries[] = [
-                    'timestamp' => strtotime($payload_time),
+                    'timestamp' => $payload_ts,
                     'state'     => $payload_state == 'ON'
                 ];
                 $states['timestamp'] = $now;

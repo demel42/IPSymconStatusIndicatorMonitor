@@ -12,6 +12,7 @@
 			"Topic": "Topic",
 			"Detection of the state \"flashing\"": "Erkennung des Zustands \"Blinken\"",
 			"Observation period": "Beobachtungs-Zeitraum",
+			"Seconds": "Sekunden",
 			"Minimum count of changes": "minimale Anzahl von Zustandsänderungen",
 			"Minutes": "Minuten",
 			"Maximum duration of inactivity": "maximale Dauer von Inaktivität",
