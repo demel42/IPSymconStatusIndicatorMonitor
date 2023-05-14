@@ -376,6 +376,11 @@ class StatusIndicatorMonitor extends IPSModule
 
     private function UpdateData()
     {
+        if ($this->CheckStatus() == self::$STATUS_INVALID) {
+            $this->SendDebug(__FUNCTION__, $this->GetStatusText() . ' => skip', 0);
+            return;
+        }
+
         if (IPS_SemaphoreEnter($this->SemaphoreID, self::$semaphoreTM) == false) {
             $this->SendDebug(__FUNCTION__, 'unable to lock sempahore ' . $this->SemaphoreID, 0);
             return;

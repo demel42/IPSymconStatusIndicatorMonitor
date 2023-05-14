@@ -66,6 +66,9 @@ Es werden folgende Variablenprofile angelegt:
 
 ## 7. Versions-Historie
 
+- 1.3 @ 14.05.2023 14:33
+  - "Instanz ist inaktiv" beachten
+
 - 1.2 @ 31.03.2023 15:14
   - mehr Debug für den Ergebnisempfang
 
