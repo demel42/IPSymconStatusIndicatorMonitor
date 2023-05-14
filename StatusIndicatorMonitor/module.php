@@ -287,6 +287,11 @@ class StatusIndicatorMonitor extends IPSModule
 
     public function ReceiveData($data)
     {
+        if ($this->CheckStatus() == self::$STATUS_INVALID) {
+            $this->SendDebug(__FUNCTION__, $this->GetStatusText() . ' => skip', 0);
+            return;
+        }
+
         $this->SendDebug(__FUNCTION__, 'data=' . $data, 0);
         $buffer = json_decode($data, true);
 
