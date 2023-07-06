@@ -296,7 +296,7 @@ class StatusIndicatorMonitor extends IPSModule
         $buffer = json_decode($data, true);
 
         $topic = $buffer['Topic'];
-        $payload = json_decode(utf8_decode($buffer['Payload']), true);
+        $payload = json_decode($buffer['Payload'], true);
 
         $this->SendDebug(__FUNCTION__, 'topic=' . $topic . ', payload=' . print_r($payload, true), 0);
 

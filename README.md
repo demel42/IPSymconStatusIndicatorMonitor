@@ -66,6 +66,11 @@ Es werden folgende Variablenprofile angelegt:
 
 ## 7. Versions-Historie
 
+- 1.4 @ 06.07.2023 09:41
+  - Vorbereitung auf IPS 7 / PHP 8.2
+  - update submodule CommonStubs
+    - Absicherung bei Zugriff auf Objekte und Inhalte
+
 - 1.3 @ 14.05.2023 14:33
   - "Instanz ist inaktiv" beachten
 
