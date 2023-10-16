@@ -12,15 +12,19 @@ class StatusIndicatorMonitor extends IPSModule
 
     private static $semaphoreTM = 1000;
 
-    private $ModuleDir;
     private $SemaphoreID;
 
     public function __construct(string $InstanceID)
     {
         parent::__construct($InstanceID);
 
-        $this->ModuleDir = __DIR__;
+        $this->CommonContruct(__DIR__);
         $this->SemaphoreID = __CLASS__ . '_' . $InstanceID;
+    }
+
+    public function __destruct()
+    {
+        $this->CommonDestruct();
     }
 
     public function Create()
@@ -41,7 +45,8 @@ class StatusIndicatorMonitor extends IPSModule
 
         $this->RegisterPropertyInteger('inactivity_duration', 5);
 
-        $this->RegisterAttributeString('UpdateInfo', '');
+        $this->RegisterAttributeString('UpdateInfo', json_encode([]));
+        $this->RegisterAttributeString('ModuleStats', json_encode([]));
 
         $this->SetBuffer('States', json_encode([]));
 
