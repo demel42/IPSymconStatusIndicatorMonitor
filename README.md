@@ -66,6 +66,10 @@ Es werden folgende Variablenprofile angelegt:
 
 ## 7. Versions-Historie
 
+- 1.7 @ 28.09.2024 08:59
+  - Verbesserung: mehr Debug
+  - update submodule CommonStubs
+
 - 1.6 @ 06.02.2024 09:46
   - Verbesserung: Angleichung interner Bibliotheken anlässlich IPS 7
   - update submodule CommonStubs
