@@ -346,12 +346,14 @@ class StatusIndicatorMonitor extends IPSModule
                         'timestamp' => $now,
                         'entries'   => [],
                     ];
+                } else {
+                    $this->SendDebug(__FUNCTION__, 'n_entries=' . count($states['entries']) . ', timestamp=' . date('d.m.Y H:i:s', $states['timestamp']), 0);
                 }
                 $entries = $states['entries'];
-                $new_entries = [];
-                $begin = $now - $max_age;
                 $n_entries = count($entries);
+                $begin = $now - $max_age;
                 $this->SendDebug(__FUNCTION__, 'now=' . $now . ', begin=' . $now . ', now=' . date('d.m.Y H:i:s', $begin), 0);
+                $new_entries = [];
                 for ($i = 0; $i < $n_entries; $i++) {
                     $entry = $entries[$i];
                     $this->SendDebug(__FUNCTION__, 'entry #' . $i . ' timestamp=' . date('d.m.Y H:i:s', $entry['timestamp']) . ', state=' . $entry['state'], 0);
@@ -403,6 +405,12 @@ class StatusIndicatorMonitor extends IPSModule
         }
 
         $states = @json_decode($this->GetBuffer('States'), true);
+        if ($states == false) {
+            $this->SendDebug(__FUNCTION__, 'no valid saved "States" (' . $this->GetBuffer('States') . ')', 0);
+        } else {
+            $this->SendDebug(__FUNCTION__, 'n_entries=' . count($states['entries']) . ', timestamp=' . date('d.m.Y H:i:s', $states['timestamp']), 0);
+        }
+        $this->SendDebug(__FUNCTION__, 'n_entries=' . $n_entries . ', timestamp=' . date('d.m.Y H:i:s', $states['timestamp']), 0);
         $entries = isset($states['entries']) ? $states['entries'] : [];
         $state = $this->DetermineState($entries);
         $this->SetValue('State', $state);
