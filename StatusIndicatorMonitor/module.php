@@ -410,7 +410,6 @@ class StatusIndicatorMonitor extends IPSModule
         } else {
             $this->SendDebug(__FUNCTION__, 'n_entries=' . count($states['entries']) . ', timestamp=' . date('d.m.Y H:i:s', $states['timestamp']), 0);
         }
-        $this->SendDebug(__FUNCTION__, 'n_entries=' . $n_entries . ', timestamp=' . date('d.m.Y H:i:s', $states['timestamp']), 0);
         $entries = isset($states['entries']) ? $states['entries'] : [];
         $state = $this->DetermineState($entries);
         $this->SetValue('State', $state);
