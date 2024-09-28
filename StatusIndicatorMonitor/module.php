@@ -404,7 +404,7 @@ class StatusIndicatorMonitor extends IPSModule
 
         $states = @json_decode($this->GetBuffer('States'), true);
         $entries = isset($states['entries']) ? $states['entries'] : [];
-        $state = $this->DetermineState($states['entries']);
+        $state = $this->DetermineState($entries);
         $this->SetValue('State', $state);
 
         if (isset($states['timestamp'])) {
