@@ -271,7 +271,7 @@ class StatusIndicatorMonitor extends IPSModule
             $cur_state = $state;
             for ($i = $n_entries - 2; $i >= 0; $i--) {
                 $entry = $entries[$i];
-                $this->SendDebug(__FUNCTION__, 'entry #' . $i . ' timestamp=' . date('d.m.Y H:i:s', $entry['timestamp']) . ', state=' . $entry['state'], 0);
+                $this->SendDebug(__FUNCTION__, 'entry #' . $i . ' timestamp=' . date('d.m.Y H:i:s', $entry['timestamp']) . ', state=' . $this->bool2str($entry['state']), 0);
                 if ($entry['timestamp'] < $begin) {
                     break;
                 }
@@ -356,7 +356,7 @@ class StatusIndicatorMonitor extends IPSModule
                 $new_entries = [];
                 for ($i = 0; $i < $n_entries; $i++) {
                     $entry = $entries[$i];
-                    $this->SendDebug(__FUNCTION__, 'entry #' . $i . ' timestamp=' . date('d.m.Y H:i:s', $entry['timestamp']) . ', state=' . $entry['state'], 0);
+                    $this->SendDebug(__FUNCTION__, 'entry #' . $i . ' timestamp=' . date('d.m.Y H:i:s', $entry['timestamp']) . ', state=' . $this->bool2str($entry['state']), 0);
                     if ($entry['timestamp'] < $begin) {
                         continue;
                     }
