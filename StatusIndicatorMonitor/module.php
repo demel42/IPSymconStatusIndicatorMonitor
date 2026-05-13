@@ -247,7 +247,7 @@ class StatusIndicatorMonitor extends IPSModule
         }
     }
 
-    private function SetUpdateInterval(int $sec = null)
+    private function SetUpdateInterval(?int $sec = null)
     {
         if (is_null($sec)) {
             $sec = $this->ReadPropertyInteger('inactivity_duration') * 60;

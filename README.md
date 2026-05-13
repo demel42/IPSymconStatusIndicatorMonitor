@@ -66,6 +66,10 @@ Es werden folgende Variablenprofile angelegt:
 
 ## 7. Versions-Historie
 
+- 1.9 @ 11.05.2026 15:02
+  - Fix: Änderung von deprecated php code
+  - update submodule CommonStubs
+
 - 1.8 @ 03.01.2025 14:17
  - update submodule CommonStubs
 
